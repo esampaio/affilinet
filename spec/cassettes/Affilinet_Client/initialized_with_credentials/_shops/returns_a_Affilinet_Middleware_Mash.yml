@@ -1,0 +1,51 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://product-api.affili.net/V3/productservice.svc/JSON/GetShopList?CurrentPage&LogoScale&PageSize&Password=1TuKEGkOJJ24dN07ByOy&Query&UpdatedAfter&publisherId=580442
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 15 Feb 2014 18:02:11 GMT
+      Server:
+      - Microsoft-IIS/6.0
+      X-Powered-By:
+      - ASP.NET
+      X-Aspnet-Version:
+      - 4.0.30319
+      Content-Length:
+      - '485'
+      Cache-Control:
+      - private
+      Content-Type:
+      - application/json
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        77u/ew0KICAiR2V0U2hvcExpc3RTdW1tYXJ5Ijogew0KICAgICJSZWNvcmRz
+        IjogMSwNCiAgICAiVG90YWxSZWNvcmRzIjogMSwNCiAgICAiVG90YWxQYWdl
+        cyI6IDEsDQogICAgIkN1cnJlbnRQYWdlIjogMQ0KICB9LA0KICAiU2hvcHMi
+        OiBbDQogICAgew0KICAgICAgIlNob3BJZCI6IDE3NDgsDQogICAgICAiUHJv
+        Z3JhbUlkIjogODk5MSwNCiAgICAgICJTaG9wVGl0bGUiOiAiYWZmaWxpbmV0
+        IFNob3dDYXNlIiwNCiAgICAgICJMYXN0VXBkYXRlIjogIlwvRGF0ZSgxMzky
+        NDA0ODIwMDAwKzAxMDApXC8iLA0KICAgICAgIlNob3BMaW5rIjogImFmZmls
+        aS5uZXQiLA0KICAgICAgIlByb2R1Y3RDb3VudCI6IDMxMywNCiAgICAgICJM
+        b2dvIjogew0KICAgICAgICAiTG9nb1NjYWxlIjogIk5vTG9nbyIsDQogICAg
+        ICAgICJVUkwiOiAiIiwNCiAgICAgICAgIldpZHRoIjogMCwNCiAgICAgICAg
+        IkhlaWdodCI6IDANCiAgICAgIH0NCiAgICB9DQogIF0NCn0=
+    http_version: 
+  recorded_at: Sat, 15 Feb 2014 18:02:11 GMT
+recorded_with: VCR 2.8.0
