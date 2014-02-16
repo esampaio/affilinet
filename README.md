@@ -1,6 +1,6 @@
 # Affilinet
 
-TODO: Write a gem description
+Alpha version of a gem to access the [Affilinet](http://affili.net) JSON API.
 
 ## Installation
 
@@ -18,7 +18,59 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Examples replicating the instructions on the [API Description](http://developer.affili.net/desktopdefault.aspx/tabid-110/178_read-845)
+
+### Basic setup
+
+````ruby
+require 'affilinet'
+
+client = Affilinet::Client.new publisher_id: 580442, password: '1TuKEGkOJJ24dN07ByOy'
+````
+
+### Search products
+
+````ruby
+result = client.search query: 'jeans'
+
+# > result.products.first.brand
+# => "Meat of the Room"
+````
+
+### Get Products
+
+````ruby
+result = client.products [580858761,580858759]
+
+# > result.products.first.price_information.display_price
+# => "starting from 90.99 GBP "
+````
+### Get Shop List
+
+````ruby
+result = client.shops
+
+# > result.shops.first.shop_title
+# => "affilinet ShowCase"
+````
+
+### Get Category List
+
+````ruby
+result = client.categories
+
+# > result.categories.first.title
+# => "Clothes & Accessories " 
+````
+
+### Get Property List
+
+````ruby
+result = client.properties 1748
+
+# result.property_counts.first.property_name
+# => "Colour" 
+````
 
 ## Contributing
 
