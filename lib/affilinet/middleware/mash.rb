@@ -1,7 +1,22 @@
 module Affilinet
   module Middleware
     class Mash < Hashie::Mash
-      def underscore(camel_cased_word)
+      def self.camelize_keys(hash)
+        hash.keys.each do |key|
+          hash[self.camelize(key)] = hash.delete key
+        end
+        hash
+      end
+
+      def self.camelize(term)
+        string = term.to_s
+        string = string.sub(/^[a-z\d]*/) { $&.capitalize }
+        string.gsub!(/(?:_|(\/))([a-z\d]*)/i) { "#{$1}#{$2.capitalize}" }
+        string.gsub!('/', '::')
+        string
+      end
+
+      def self.underscore(camel_cased_word)
         word = camel_cased_word.to_s.dup
         word.gsub!('::', '/')
         word.gsub!(/(?:([A-Za-z\d])|^)(#{/(?=a)b/})(?=\b|[^a-z])/) { "#{$1}#{$1 && '_'}#{$2.downcase}" }
@@ -14,7 +29,7 @@ module Affilinet
 
       protected
       def convert_key(key)
-        underscore key.to_s
+        Affilinet::Middleware::Mash.underscore key.to_s
       end
     end
   end

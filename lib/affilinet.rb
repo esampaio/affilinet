@@ -6,6 +6,7 @@ require "affilinet/middleware/mash"
 require "affilinet/middleware/mashify"
 require "affilinet/middleware/parse_json"
 require "affilinet/client"
+require "affilinet/shop"
 
 module Affilinet
 end

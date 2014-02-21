@@ -42,16 +42,6 @@ module Affilinet
       get 'GetPropertyList', 'ShopId' => id
     end
 
-    def shops args = {}
-      options = @options.merge args
-      get 'GetShopList',
-        'LogoScale'    => options[:logo_scale],
-        'CurrentPage'  => options[:page],
-        'PageSize'     => options[:page_size],
-        'Query'        => options[:query],
-        'UpdatedAfter' => options[:updated_after]
-    end
-
     def products ids = [], args = {}
       options = @options.merge args
       get 'GetProducts',

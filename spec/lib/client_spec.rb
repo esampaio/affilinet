@@ -54,18 +54,6 @@ describe Affilinet::Client, :vcr do
       end
     end
 
-    describe '#shops' do
-      it 'performs the GET request to the correct endpoint' do
-        expect(subject).to receive(:get).with('GetShopList', {"LogoScale"=>nil,
-          "CurrentPage"=>nil, "PageSize"=>nil, "Query"=>nil, "UpdatedAfter"=>nil})
-        subject.shops
-      end
-
-      it 'returns a Affilinet::Middleware::Mash' do
-        expect(subject.shops).to be_an_instance_of Affilinet::Middleware::Mash
-      end
-    end
-
     describe '#products' do
       it 'performs the GET request to the correct endpoint' do
         expect(subject).to receive(:get).with('GetProducts', {"ProductIds"=>"",
