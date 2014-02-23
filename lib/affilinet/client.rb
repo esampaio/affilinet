@@ -42,35 +42,16 @@ module Affilinet
       get 'GetPropertyList', 'ShopId' => id
     end
 
-    def products ids = [], args = {}
-      options = @options.merge args
-      get 'GetProducts',
-        'ProductIds'  => ids.take(50).join(','),
-        'ImageScales' => options[:image_scales].join(','),
-        'LogoScales'  => options[:logo_scales].join(',')
+    def products
+      Affilinet::Product.new self
     end
 
-    def search args = {}
-      options = @options.merge args
-      get 'SearchProducts',
-        'ShopIds'                => options[:shop_ids].join(','),
-        'ShopIdMode'             => options[:shop_id_exclude] ? 'Exclude' : 'Include',
-        'Query'                  => options[:query],
-        'CategoryIds'            => options[:category_ids].join(','),
-        'UseAffilinetCategories' => options[:affilinet_categories],
-        'ExcludeSubCategories'   => options[:categories_exclude],
-        'WithImageOnly'          => options[:image_only],
-        'ImageScales'            => options[:image_scales].join(','),
-        'LogoScales'             => options[:logo_scales].join(','),
-        'CurrentPage'            => options[:page],
-        'PageSize'               => options[:page_size],
-        'MinimumPrice'           => options[:price_min],
-        'MaximumPrice'           => options[:price_max],
-        'SortBy'                 => options[:sort_by],
-        'SortOrder'              => options[:sort_asc] ? 'ascending' : 'descending',
-        'FacetFields'            => options[:facets].take(4).join(','),
-        'FacetValueLimit'        => options[:facet_limit],
-        'FQ'                     => options[:filter_query]
+    def shops
+      Affilinet::Shop.new self
+    end
+
+    def search
+      Affilinet::Search.new self
     end
   end
 end

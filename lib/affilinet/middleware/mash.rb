@@ -1,6 +1,13 @@
 module Affilinet
   module Middleware
     class Mash < Hashie::Mash
+      def self.join_arrays(hash)
+        hash.each_pair do |key,value|
+          hash[key] = value.join(',') if value.is_a? Array
+        end
+        hash
+      end
+
       def self.camelize_keys(hash)
         hash.keys.each do |key|
           hash[self.camelize(key)] = hash.delete key

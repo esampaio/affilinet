@@ -12,7 +12,7 @@ describe Affilinet::Client, :vcr do
 
     it 'raises Faraday::Error::ParsingError on wrong API requests' do
       expect do
-        subject.search
+        subject.search.all
       end.to raise_error Faraday::Error::ParsingError
     end
 
@@ -54,32 +54,21 @@ describe Affilinet::Client, :vcr do
       end
     end
 
-    describe '#products' do
-      it 'performs the GET request to the correct endpoint' do
-        expect(subject).to receive(:get).with('GetProducts', {"ProductIds"=>"",
-          "ImageScales"=>"", "LogoScales"=>""})
-        subject.products
-      end
-
+    describe '#shops' do
       it 'returns a Affilinet::Middleware::Mash' do
-        expect(subject.products [580858761,580858759]).to be_an_instance_of Affilinet::Middleware::Mash
+        expect(subject.shops.all).to be_an_instance_of Affilinet::Middleware::Mash
+      end
+    end
+
+    describe '#products' do
+      it 'returns a Affilinet::Middleware::Mash' do
+        expect(subject.products.product_ids([580858761,580858759]).all).to be_an_instance_of Affilinet::Middleware::Mash
       end
     end
 
     describe '#search' do
-      it 'performs the GET request to the correct endpoint' do
-        expect(subject).to receive(:get).with('SearchProducts', {"ShopIds"=>"",
-          "ShopIdMode"=>"Include", "Query"=>nil, "CategoryIds"=>"",
-          "UseAffilinetCategories"=>nil, "ExcludeSubCategories"=>nil,
-          "WithImageOnly"=>nil, "ImageScales"=>"", "LogoScales"=>"",
-          "CurrentPage"=>nil, "PageSize"=>nil, "MinimumPrice"=>nil,
-          "MaximumPrice"=>nil, "SortBy"=>nil, "SortOrder"=>"descending",
-          "FacetFields"=>"", "FacetValueLimit"=>nil, "FQ"=>nil})
-        subject.search
-      end
-
       it 'returns a Affilinet::Middleware::Mash' do
-        expect(subject.search query: 'jeans').to be_an_instance_of Affilinet::Middleware::Mash
+        expect(subject.search.query('jeans').all).to be_an_instance_of Affilinet::Middleware::Mash
       end
     end
   end

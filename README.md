@@ -31,7 +31,7 @@ client = Affilinet::Client.new publisher_id: 580442, password: '1TuKEGkOJJ24dN07
 ### Search products
 
 ````ruby
-result = client.search query: 'jeans'
+result = client.search.query('jeans').all
 
 # > result.products.first.brand
 # => "Meat of the Room"
@@ -40,7 +40,7 @@ result = client.search query: 'jeans'
 ### Get Products
 
 ````ruby
-result = client.products [580858761,580858759]
+result = client.products.product_ids([580858761,580858759]).all
 
 # > result.products.first.price_information.display_price
 # => "starting from 90.99 GBP "
@@ -48,7 +48,7 @@ result = client.products [580858761,580858759]
 ### Get Shop List
 
 ````ruby
-result = client.shops
+result = client.shops.all
 
 # > result.shops.first.shop_title
 # => "affilinet ShowCase"

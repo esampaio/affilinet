@@ -54,5 +54,10 @@ describe Affilinet::Shop do
       expect(subject.client).to receive(:get).with('GetShopList', {'CurrentPage' => 71, 'PageSize' => 1})
       subject.current_page(3).page_size(35).first
     end
+
+    it 'returns all if no page or size is provided' do
+      expect(subject.client).to receive(:get).with('GetShopList', {})
+      subject.first
+    end
   end
 end
