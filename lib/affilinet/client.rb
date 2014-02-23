@@ -34,12 +34,12 @@ module Affilinet
       connection.get(endpoint, args).body
     end
 
-    def categories id=0
-      get 'GetCategoryList', 'ShopId' => id
+    def categories
+      Affilinet::Category.new self
     end
 
-    def properties id
-      get 'GetPropertyList', 'ShopId' => id
+    def properties
+      Affilinet::Property.new self
     end
 
     def products

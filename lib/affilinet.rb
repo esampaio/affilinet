@@ -10,6 +10,8 @@ require "affilinet/client"
 require "affilinet/shop"
 require "affilinet/product"
 require "affilinet/search"
+require "affilinet/category"
+require "affilinet/property"
 
 module Affilinet
 end

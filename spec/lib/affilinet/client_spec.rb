@@ -33,24 +33,14 @@ describe Affilinet::Client, :vcr do
     end
 
     describe '#categories' do
-      it 'performs the GET request to the correct endpoint' do
-        expect(subject).to receive(:get).with('GetCategoryList', {'ShopId'=>0})
-        subject.categories
-      end
-
       it 'returns a Affilinet::Middleware::Mash' do
-        expect(subject.categories).to be_an_instance_of Affilinet::Middleware::Mash
+        expect(subject.categories.shop_id(0).all).to be_an_instance_of Affilinet::Middleware::Mash
       end
     end
 
     describe '#properties' do
-      it 'performs the GET request to the correct endpoint' do
-        expect(subject).to receive(:get).with('GetPropertyList', {'ShopId'=>1})
-        subject.properties 1
-      end
-
       it 'returns a Affilinet::Middleware::Mash' do
-        expect(subject.properties 1748).to be_an_instance_of Affilinet::Middleware::Mash
+        expect(subject.properties.shop_id(1748).all).to be_an_instance_of Affilinet::Middleware::Mash
       end
     end
 

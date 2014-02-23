@@ -57,7 +57,7 @@ result = client.shops.all
 ### Get Category List
 
 ````ruby
-result = client.categories
+result = client.categories.shop_id(0).all
 
 # > result.categories.first.title
 # => "Clothes & Accessories " 
@@ -66,7 +66,7 @@ result = client.categories
 ### Get Property List
 
 ````ruby
-result = client.properties 1748
+result = client.properties.shop_id(1748).all
 
 # result.property_counts.first.property_name
 # => "Colour" 
